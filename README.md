@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) AWS Import/Export MSP Connector
+# ![LOGO](logo.png) AWS Import/Export **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the AWS Import/Export API (version 2010-06-01).
+A generated **flow**ground connector for the AWS Import/Export API (version 2010-06-01).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/importexport/2010-06-01/swagger.json<br/>
-Generated at: 2019-05-07T11:16:06+03:00
+Generated at: 2019-05-07T17:35:46+03:00
 
 ## API Description
 
@@ -91,7 +91,7 @@ Supported authorization schemes:
 
 ## License
 
-flowground :- Telekom iPaaS / amazonaws-com-importexport-connector<br/>
+**flow**ground :- Telekom iPaaS / amazonaws-com-importexport-connector<br/>
 Copyright © 2019, [Deutsche Telekom AG](https://www.telekom.de)<br/>
 contact: flowground@telekom.de
 
