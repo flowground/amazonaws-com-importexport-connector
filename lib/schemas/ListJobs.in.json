@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "MaxJobs": {
+            "required": false,
+            "type": "string"
+        },
+        "Marker": {
+            "required": false,
+            "type": "string"
+        },
+        "Operation": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "ListJobs"
+            ]
+        },
+        "SignatureVersion": {
+            "required": true,
+            "type": "string"
+        },
+        "Timestamp": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "Signature": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Input structure for the ListJobs operation.",
+            "properties": {
+                "APIVersion": {
+                    "description": "Specifies the version of the client tool.",
+                    "type": "string"
+                },
+                "Marker": {
+                    "description": "Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists your jobs in reverse chronological order. See MaxJobs.",
+                    "type": "string"
+                },
+                "MaxJobs": {
+                    "description": "Sets the maximum number of jobs returned in the response. If there are additional jobs that were not returned because MaxJobs was exceeded, the response contains &lt;IsTruncated&gt;true&lt;/IsTruncated&gt;. To return the additional jobs, see Marker.",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

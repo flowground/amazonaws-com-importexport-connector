@@ -1,0 +1,94 @@
+{
+    "type": "object",
+    "properties": {
+        "Operation": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "GetShippingLabel"
+            ]
+        },
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "SignatureMethod": {
+            "required": true,
+            "type": "string"
+        },
+        "SignatureVersion": {
+            "required": true,
+            "type": "string"
+        },
+        "Timestamp": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "Signature": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "APIVersion": {
+                    "description": "Specifies the version of the client tool.",
+                    "type": "string"
+                },
+                "city": {
+                    "description": "Specifies the name of your city for the return address.",
+                    "type": "string"
+                },
+                "company": {
+                    "description": "Specifies the name of the company that will ship this package.",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "Specifies the name of your country for the return address.",
+                    "type": "string"
+                },
+                "jobIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Specifies the name of the person responsible for shipping this package.",
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "description": "Specifies the phone number of the person responsible for shipping this package.",
+                    "type": "string"
+                },
+                "postalCode": {
+                    "description": "Specifies the postal code for the return address.",
+                    "type": "string"
+                },
+                "stateOrProvince": {
+                    "description": "Specifies the name of your state or your province for the return address.",
+                    "type": "string"
+                },
+                "street1": {
+                    "description": "Specifies the first part of the street address for the return address, for example 1234 Main Street.",
+                    "type": "string"
+                },
+                "street2": {
+                    "description": "Specifies the optional second part of the street address for the return address, for example Suite 100.",
+                    "type": "string"
+                },
+                "street3": {
+                    "description": "Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "jobIds"
+            ],
+            "type": "object"
+        }
+    }
+}

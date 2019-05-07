@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "Operation": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "CreateJob"
+            ]
+        },
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "SignatureMethod": {
+            "required": true,
+            "type": "string"
+        },
+        "SignatureVersion": {
+            "required": true,
+            "type": "string"
+        },
+        "Timestamp": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "Signature": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Input structure for the CreateJob operation.",
+            "properties": {
+                "APIVersion": {
+                    "description": "Specifies the version of the client tool.",
+                    "type": "string"
+                },
+                "JobType": {
+                    "description": "Specifies whether the job to initiate is an import or export job.",
+                    "enum": [
+                        "Import",
+                        "Export"
+                    ],
+                    "type": "string"
+                },
+                "Manifest": {
+                    "description": "The UTF-8 encoded text of the manifest file.",
+                    "type": "string"
+                },
+                "ManifestAddendum": {
+                    "description": "For internal use only.",
+                    "type": "string"
+                },
+                "ValidateOnly": {
+                    "description": "Validate the manifest and parameter values in the request but do not actually create a job.",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "JobType",
+                "Manifest",
+                "ValidateOnly"
+            ],
+            "type": "object"
+        }
+    }
+}

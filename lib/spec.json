@@ -1,0 +1,2981 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://importexport.amazonaws.com/"
+        },
+        {
+            "url": "http://importexport.amazonaws.com/"
+        }
+    ],
+    "x-hasEquivalentPaths": true,
+    "info": {
+        "contact": {
+            "email": "mike.ralphson@gmail.com",
+            "name": "Mike Ralphson",
+            "url": "https://github.com/mermade/aws2openapi",
+            "x-twitter": "PermittedSoc"
+        },
+        "description": "<fullname>AWS Import/Export Service</fullname> AWS Import/Export accelerates transferring large amounts of data between the AWS cloud and portable storage devices that you mail to us. AWS Import/Export transfers data directly onto and off of your storage devices using Amazon's high-speed internal network and bypassing the Internet. For large data sets, AWS Import/Export is often faster than Internet transfer and more cost effective than upgrading your connectivity.",
+        "license": {
+            "name": "Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/"
+        },
+        "termsOfService": "https://aws.amazon.com/service-terms/",
+        "title": "AWS Import/Export",
+        "version": "2010-06-01",
+        "x-apiClientRegistration": {
+            "url": "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct"
+        },
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "backgroundColor": "#FFFFFF",
+            "url": "https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.jpeg"
+        },
+        "x-origin": [
+            {
+                "contentType": "application/json",
+                "converter": {
+                    "url": "https://github.com/mermade/aws2openapi",
+                    "version": "1.0.0"
+                },
+                "url": "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/importexport-2010-06-01.normal.json",
+                "x-apisguru-direct": true
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "amazonaws.com",
+        "x-release": "v2",
+        "x-serviceName": "importexport"
+    },
+    "externalDocs": {
+        "description": "Amazon Web Services documentation",
+        "url": "https://aws.amazon.com/importexport/"
+    },
+    "security": [
+        {
+            "hmac": []
+        }
+    ],
+    "paths": {
+        "/": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "AWSAccessKeyId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureMethod",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureVersion",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Timestamp",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Signature",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.",
+                "operationId": "CancelJob",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "Operation",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "CancelJob"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Output structure for the CancelJob operation.",
+                                    "properties": {
+                                        "Success": {
+                                            "description": "Specifies whether (true) or not (false) AWS Import/Export updated your job.",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InvalidJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The JOBID was missing, not found, or not associated with the AWS account.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "ExpiredJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Indicates that the specified job has expired out of the system.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "CanceledJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The specified job ID has been canceled and is no longer valid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "UnableToCancelJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "AWS Import/Export cannot cancel the job",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "InvalidAccessKeyIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "485": {
+                        "description": "InvalidVersionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The client tool version is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Input structure for the CancelJob operation.",
+                                "properties": {
+                                    "APIVersion": {
+                                        "description": "Specifies the version of the client tool.",
+                                        "type": "string"
+                                    },
+                                    "JobId": {
+                                        "description": "A unique identifier which refers to a particular job.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "JobId"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#CreateJob": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "AWSAccessKeyId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureMethod",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureVersion",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Timestamp",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Signature",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.",
+                "operationId": "CreateJob",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "Operation",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "CreateJob"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Output structure for the CreateJob operation.",
+                                    "properties": {
+                                        "ArtifactList": {
+                                            "description": "A collection of artifacts.",
+                                            "items": {
+                                                "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                                                "properties": {
+                                                    "Description": {
+                                                        "description": "The associated description for this object.",
+                                                        "type": "string"
+                                                    },
+                                                    "URL": {
+                                                        "description": "The URL for a given Artifact.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "JobId": {
+                                            "description": "A unique identifier which refers to a particular job.",
+                                            "type": "string"
+                                        },
+                                        "JobType": {
+                                            "description": "Specifies whether the job to initiate is an import or export job.",
+                                            "enum": [
+                                                "Import",
+                                                "Export"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "Signature": {
+                                            "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                                            "type": "string"
+                                        },
+                                        "SignatureFileContents": {
+                                            "description": "The actual text of the SIGNATURE file to be written to disk.",
+                                            "type": "string"
+                                        },
+                                        "WarningMessage": {
+                                            "description": "An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "MissingParameterException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more required parameters was missing from the request.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidParameterException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more parameters had an invalid value.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InvalidAccessKeyIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "InvalidAddressException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The address specified in the manifest is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "InvalidManifestFieldException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more manifest fields was invalid. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "485": {
+                        "description": "MissingManifestFieldException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more required fields were missing from the manifest file. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "486": {
+                        "description": "NoSuchBucketException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "487": {
+                        "description": "MissingCustomsException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more required customs parameters was missing from the manifest.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "488": {
+                        "description": "InvalidCustomsException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more customs parameters was invalid. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "489": {
+                        "description": "InvalidFileSystemException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "File system specified in export manifest is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "490": {
+                        "description": "MultipleRegionsException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "491": {
+                        "description": "BucketPermissionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The account specified does not have the appropriate bucket permissions.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "492": {
+                        "description": "MalformedManifestException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Your manifest is not well-formed.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "493": {
+                        "description": "CreateJobQuotaExceededException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Each account can create only a certain number of jobs per day. If you need to create more than this, please contact awsimportexport@amazon.com to explain your particular use case.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "494": {
+                        "description": "InvalidJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The JOBID was missing, not found, or not associated with the AWS account.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "495": {
+                        "description": "InvalidVersionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The client tool version is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Input structure for the CreateJob operation.",
+                                "properties": {
+                                    "APIVersion": {
+                                        "description": "Specifies the version of the client tool.",
+                                        "type": "string"
+                                    },
+                                    "JobType": {
+                                        "description": "Specifies whether the job to initiate is an import or export job.",
+                                        "enum": [
+                                            "Import",
+                                            "Export"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Manifest": {
+                                        "description": "The UTF-8 encoded text of the manifest file.",
+                                        "type": "string"
+                                    },
+                                    "ManifestAddendum": {
+                                        "description": "For internal use only.",
+                                        "type": "string"
+                                    },
+                                    "ValidateOnly": {
+                                        "description": "Validate the manifest and parameter values in the request but do not actually create a job.",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "JobType",
+                                    "Manifest",
+                                    "ValidateOnly"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#GetShippingLabel": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "AWSAccessKeyId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureMethod",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureVersion",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Timestamp",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Signature",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.",
+                "operationId": "GetShippingLabel",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "Operation",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "GetShippingLabel"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "properties": {
+                                        "ShippingLabelURL": {
+                                            "type": "string"
+                                        },
+                                        "Warning": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InvalidJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The JOBID was missing, not found, or not associated with the AWS account.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "ExpiredJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Indicates that the specified job has expired out of the system.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "CanceledJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The specified job ID has been canceled and is no longer valid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "InvalidAccessKeyIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "InvalidAddressException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The address specified in the manifest is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "485": {
+                        "description": "InvalidVersionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The client tool version is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "486": {
+                        "description": "InvalidParameterException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more parameters had an invalid value.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "APIVersion": {
+                                        "description": "Specifies the version of the client tool.",
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "description": "Specifies the name of your city for the return address.",
+                                        "type": "string"
+                                    },
+                                    "company": {
+                                        "description": "Specifies the name of the company that will ship this package.",
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "description": "Specifies the name of your country for the return address.",
+                                        "type": "string"
+                                    },
+                                    "jobIds": {
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "name": {
+                                        "description": "Specifies the name of the person responsible for shipping this package.",
+                                        "type": "string"
+                                    },
+                                    "phoneNumber": {
+                                        "description": "Specifies the phone number of the person responsible for shipping this package.",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "description": "Specifies the postal code for the return address.",
+                                        "type": "string"
+                                    },
+                                    "stateOrProvince": {
+                                        "description": "Specifies the name of your state or your province for the return address.",
+                                        "type": "string"
+                                    },
+                                    "street1": {
+                                        "description": "Specifies the first part of the street address for the return address, for example 1234 Main Street.",
+                                        "type": "string"
+                                    },
+                                    "street2": {
+                                        "description": "Specifies the optional second part of the street address for the return address, for example Suite 100.",
+                                        "type": "string"
+                                    },
+                                    "street3": {
+                                        "description": "Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "jobIds"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#GetStatus": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "AWSAccessKeyId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureMethod",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureVersion",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Timestamp",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Signature",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.",
+                "operationId": "GetStatus",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "Operation",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "GetStatus"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Output structure for the GetStatus operation.",
+                                    "properties": {
+                                        "ArtifactList": {
+                                            "description": "A collection of artifacts.",
+                                            "items": {
+                                                "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                                                "properties": {
+                                                    "Description": {
+                                                        "description": "The associated description for this object.",
+                                                        "type": "string"
+                                                    },
+                                                    "URL": {
+                                                        "description": "The URL for a given Artifact.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "Carrier": {
+                                            "description": "Name of the shipping company. This value is included when the LocationCode is \"Returned\".",
+                                            "type": "string"
+                                        },
+                                        "CreationDate": {
+                                            "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                                            "format": "date-time",
+                                            "type": "string"
+                                        },
+                                        "CurrentManifest": {
+                                            "description": "The last manifest submitted, which will be used to process the job.",
+                                            "type": "string"
+                                        },
+                                        "ErrorCount": {
+                                            "description": "Number of errors. We return this value when the ProgressCode is Success or SuccessWithErrors.",
+                                            "type": "integer"
+                                        },
+                                        "JobId": {
+                                            "description": "A unique identifier which refers to a particular job.",
+                                            "type": "string"
+                                        },
+                                        "JobType": {
+                                            "description": "Specifies whether the job to initiate is an import or export job.",
+                                            "enum": [
+                                                "Import",
+                                                "Export"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "LocationCode": {
+                                            "description": "A token representing the location of the storage device, such as \"AtAWS\".",
+                                            "type": "string"
+                                        },
+                                        "LocationMessage": {
+                                            "description": "A more human readable form of the physical location of the storage device.",
+                                            "type": "string"
+                                        },
+                                        "LogBucket": {
+                                            "description": "Amazon S3 bucket for user logs.",
+                                            "type": "string"
+                                        },
+                                        "LogKey": {
+                                            "description": "The key where the user logs were stored.",
+                                            "type": "string"
+                                        },
+                                        "ProgressCode": {
+                                            "description": "A token representing the state of the job, such as \"Started\".",
+                                            "type": "string"
+                                        },
+                                        "ProgressMessage": {
+                                            "description": "A more human readable form of the job status.",
+                                            "type": "string"
+                                        },
+                                        "Signature": {
+                                            "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                                            "type": "string"
+                                        },
+                                        "SignatureFileContents": {
+                                            "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                                            "type": "string"
+                                        },
+                                        "TrackingNumber": {
+                                            "description": "The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is \"Returned\".",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InvalidJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The JOBID was missing, not found, or not associated with the AWS account.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "ExpiredJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Indicates that the specified job has expired out of the system.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "CanceledJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The specified job ID has been canceled and is no longer valid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "InvalidAccessKeyIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "InvalidVersionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The client tool version is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Input structure for the GetStatus operation.",
+                                "properties": {
+                                    "APIVersion": {
+                                        "description": "Specifies the version of the client tool.",
+                                        "type": "string"
+                                    },
+                                    "JobId": {
+                                        "description": "A unique identifier which refers to a particular job.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "JobId"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#ListJobs": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "AWSAccessKeyId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureMethod",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureVersion",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Timestamp",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Signature",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.",
+                "operationId": "ListJobs",
+                "parameters": [
+                    {
+                        "description": "Pagination limit",
+                        "in": "query",
+                        "name": "MaxJobs",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Pagination token",
+                        "in": "query",
+                        "name": "Marker",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "Operation",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "ListJobs"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Output structure for the ListJobs operation.",
+                                    "properties": {
+                                        "IsTruncated": {
+                                            "description": "Indicates whether the list of jobs was truncated. If true, then call ListJobs again using the last JobId element as the marker.",
+                                            "type": "boolean"
+                                        },
+                                        "Jobs": {
+                                            "description": "A list container for Jobs returned by the ListJobs operation.",
+                                            "items": {
+                                                "description": "Representation of a job returned by the ListJobs operation.",
+                                                "properties": {
+                                                    "CreationDate": {
+                                                        "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "IsCanceled": {
+                                                        "description": "Indicates whether the job was canceled.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "JobId": {
+                                                        "description": "A unique identifier which refers to a particular job.",
+                                                        "type": "string"
+                                                    },
+                                                    "JobType": {
+                                                        "description": "Specifies whether the job to initiate is an import or export job.",
+                                                        "enum": [
+                                                            "Import",
+                                                            "Export"
+                                                        ],
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InvalidParameterException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more parameters had an invalid value.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidAccessKeyIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InvalidVersionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The client tool version is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Input structure for the ListJobs operation.",
+                                "properties": {
+                                    "APIVersion": {
+                                        "description": "Specifies the version of the client tool.",
+                                        "type": "string"
+                                    },
+                                    "Marker": {
+                                        "description": "Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists your jobs in reverse chronological order. See MaxJobs.",
+                                        "type": "string"
+                                    },
+                                    "MaxJobs": {
+                                        "description": "Sets the maximum number of jobs returned in the response. If there are additional jobs that were not returned because MaxJobs was exceeded, the response contains &lt;IsTruncated&gt;true&lt;/IsTruncated&gt;. To return the additional jobs, see Marker.",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/#UpdateJob": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "AWSAccessKeyId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureMethod",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "SignatureVersion",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Timestamp",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Signature",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.",
+                "operationId": "UpdateJob",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "Operation",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "UpdateJob"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Output structure for the UpateJob operation.",
+                                    "properties": {
+                                        "ArtifactList": {
+                                            "description": "A collection of artifacts.",
+                                            "items": {
+                                                "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                                                "properties": {
+                                                    "Description": {
+                                                        "description": "The associated description for this object.",
+                                                        "type": "string"
+                                                    },
+                                                    "URL": {
+                                                        "description": "The URL for a given Artifact.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "Success": {
+                                            "description": "Specifies whether (true) or not (false) AWS Import/Export updated your job.",
+                                            "type": "boolean"
+                                        },
+                                        "WarningMessage": {
+                                            "description": "An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "MissingParameterException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more required parameters was missing from the request.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidParameterException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more parameters had an invalid value.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InvalidAccessKeyIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "InvalidAddressException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The address specified in the manifest is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "InvalidManifestFieldException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more manifest fields was invalid. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "485": {
+                        "description": "InvalidJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The JOBID was missing, not found, or not associated with the AWS account.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "486": {
+                        "description": "MissingManifestFieldException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more required fields were missing from the manifest file. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "487": {
+                        "description": "NoSuchBucketException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "488": {
+                        "description": "ExpiredJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Indicates that the specified job has expired out of the system.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "489": {
+                        "description": "CanceledJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The specified job ID has been canceled and is no longer valid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "490": {
+                        "description": "MissingCustomsException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more required customs parameters was missing from the manifest.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "491": {
+                        "description": "InvalidCustomsException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "One or more customs parameters was invalid. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "492": {
+                        "description": "InvalidFileSystemException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "File system specified in export manifest is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "493": {
+                        "description": "MultipleRegionsException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "494": {
+                        "description": "BucketPermissionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The account specified does not have the appropriate bucket permissions.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "495": {
+                        "description": "MalformedManifestException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "Your manifest is not well-formed.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "496": {
+                        "description": "UnableToUpdateJobIdException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "AWS Import/Export cannot update the job",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "497": {
+                        "description": "InvalidVersionException",
+                        "x-aws-exception": true,
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "description": "The client tool version is invalid.",
+                                    "properties": {
+                                        "message": {
+                                            "description": "The human-readable description of a particular error.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Input structure for the UpateJob operation.",
+                                "properties": {
+                                    "APIVersion": {
+                                        "description": "Specifies the version of the client tool.",
+                                        "type": "string"
+                                    },
+                                    "JobId": {
+                                        "description": "A unique identifier which refers to a particular job.",
+                                        "type": "string"
+                                    },
+                                    "JobType": {
+                                        "description": "Specifies whether the job to initiate is an import or export job.",
+                                        "enum": [
+                                            "Import",
+                                            "Export"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Manifest": {
+                                        "description": "The UTF-8 encoded text of the manifest file.",
+                                        "type": "string"
+                                    },
+                                    "ValidateOnly": {
+                                        "description": "Validate the manifest and parameter values in the request but do not actually create a job.",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "JobId",
+                                    "Manifest",
+                                    "JobType",
+                                    "ValidateOnly"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "APIVersion": {
+                "description": "Specifies the version of the client tool.",
+                "type": "string"
+            },
+            "Artifact": {
+                "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                "properties": {
+                    "Description": {
+                        "description": "The associated description for this object.",
+                        "type": "string"
+                    },
+                    "URL": {
+                        "description": "The URL for a given Artifact.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ArtifactList": {
+                "description": "A collection of artifacts.",
+                "items": {
+                    "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                    "properties": {
+                        "Description": {
+                            "description": "The associated description for this object.",
+                            "type": "string"
+                        },
+                        "URL": {
+                            "description": "The URL for a given Artifact.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "BucketPermissionException": {
+                "description": "The account specified does not have the appropriate bucket permissions.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CancelJobInput": {
+                "description": "Input structure for the CancelJob operation.",
+                "properties": {
+                    "APIVersion": {
+                        "description": "Specifies the version of the client tool.",
+                        "type": "string"
+                    },
+                    "JobId": {
+                        "description": "A unique identifier which refers to a particular job.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "JobId"
+                ],
+                "type": "object"
+            },
+            "CancelJobOutput": {
+                "description": "Output structure for the CancelJob operation.",
+                "properties": {
+                    "Success": {
+                        "description": "Specifies whether (true) or not (false) AWS Import/Export updated your job.",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "CanceledJobIdException": {
+                "description": "The specified job ID has been canceled and is no longer valid.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Carrier": {
+                "description": "Name of the shipping company. This value is included when the LocationCode is \"Returned\".",
+                "type": "string"
+            },
+            "CreateJobInput": {
+                "description": "Input structure for the CreateJob operation.",
+                "properties": {
+                    "APIVersion": {
+                        "description": "Specifies the version of the client tool.",
+                        "type": "string"
+                    },
+                    "JobType": {
+                        "description": "Specifies whether the job to initiate is an import or export job.",
+                        "enum": [
+                            "Import",
+                            "Export"
+                        ],
+                        "type": "string"
+                    },
+                    "Manifest": {
+                        "description": "The UTF-8 encoded text of the manifest file.",
+                        "type": "string"
+                    },
+                    "ManifestAddendum": {
+                        "description": "For internal use only.",
+                        "type": "string"
+                    },
+                    "ValidateOnly": {
+                        "description": "Validate the manifest and parameter values in the request but do not actually create a job.",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "JobType",
+                    "Manifest",
+                    "ValidateOnly"
+                ],
+                "type": "object"
+            },
+            "CreateJobOutput": {
+                "description": "Output structure for the CreateJob operation.",
+                "properties": {
+                    "ArtifactList": {
+                        "description": "A collection of artifacts.",
+                        "items": {
+                            "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                            "properties": {
+                                "Description": {
+                                    "description": "The associated description for this object.",
+                                    "type": "string"
+                                },
+                                "URL": {
+                                    "description": "The URL for a given Artifact.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "JobId": {
+                        "description": "A unique identifier which refers to a particular job.",
+                        "type": "string"
+                    },
+                    "JobType": {
+                        "description": "Specifies whether the job to initiate is an import or export job.",
+                        "enum": [
+                            "Import",
+                            "Export"
+                        ],
+                        "type": "string"
+                    },
+                    "Signature": {
+                        "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                        "type": "string"
+                    },
+                    "SignatureFileContents": {
+                        "description": "The actual text of the SIGNATURE file to be written to disk.",
+                        "type": "string"
+                    },
+                    "WarningMessage": {
+                        "description": "An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CreateJobQuotaExceededException": {
+                "description": "Each account can create only a certain number of jobs per day. If you need to create more than this, please contact awsimportexport@amazon.com to explain your particular use case.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CreationDate": {
+                "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                "format": "date-time",
+                "type": "string"
+            },
+            "CurrentManifest": {
+                "description": "The last manifest submitted, which will be used to process the job.",
+                "type": "string"
+            },
+            "Description": {
+                "description": "The associated description for this object.",
+                "type": "string"
+            },
+            "ErrorCount": {
+                "description": "Number of errors. We return this value when the ProgressCode is Success or SuccessWithErrors.",
+                "type": "integer"
+            },
+            "ErrorMessage": {
+                "description": "The human-readable description of a particular error.",
+                "type": "string"
+            },
+            "ExpiredJobIdException": {
+                "description": "Indicates that the specified job has expired out of the system.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "GenericString": {
+                "type": "string"
+            },
+            "GetShippingLabelInput": {
+                "properties": {
+                    "APIVersion": {
+                        "description": "Specifies the version of the client tool.",
+                        "type": "string"
+                    },
+                    "city": {
+                        "description": "Specifies the name of your city for the return address.",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "Specifies the name of the company that will ship this package.",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "Specifies the name of your country for the return address.",
+                        "type": "string"
+                    },
+                    "jobIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "description": "Specifies the name of the person responsible for shipping this package.",
+                        "type": "string"
+                    },
+                    "phoneNumber": {
+                        "description": "Specifies the phone number of the person responsible for shipping this package.",
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "description": "Specifies the postal code for the return address.",
+                        "type": "string"
+                    },
+                    "stateOrProvince": {
+                        "description": "Specifies the name of your state or your province for the return address.",
+                        "type": "string"
+                    },
+                    "street1": {
+                        "description": "Specifies the first part of the street address for the return address, for example 1234 Main Street.",
+                        "type": "string"
+                    },
+                    "street2": {
+                        "description": "Specifies the optional second part of the street address for the return address, for example Suite 100.",
+                        "type": "string"
+                    },
+                    "street3": {
+                        "description": "Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "jobIds"
+                ],
+                "type": "object"
+            },
+            "GetShippingLabelOutput": {
+                "properties": {
+                    "ShippingLabelURL": {
+                        "type": "string"
+                    },
+                    "Warning": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "GetStatusInput": {
+                "description": "Input structure for the GetStatus operation.",
+                "properties": {
+                    "APIVersion": {
+                        "description": "Specifies the version of the client tool.",
+                        "type": "string"
+                    },
+                    "JobId": {
+                        "description": "A unique identifier which refers to a particular job.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "JobId"
+                ],
+                "type": "object"
+            },
+            "GetStatusOutput": {
+                "description": "Output structure for the GetStatus operation.",
+                "properties": {
+                    "ArtifactList": {
+                        "description": "A collection of artifacts.",
+                        "items": {
+                            "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                            "properties": {
+                                "Description": {
+                                    "description": "The associated description for this object.",
+                                    "type": "string"
+                                },
+                                "URL": {
+                                    "description": "The URL for a given Artifact.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "Carrier": {
+                        "description": "Name of the shipping company. This value is included when the LocationCode is \"Returned\".",
+                        "type": "string"
+                    },
+                    "CreationDate": {
+                        "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "CurrentManifest": {
+                        "description": "The last manifest submitted, which will be used to process the job.",
+                        "type": "string"
+                    },
+                    "ErrorCount": {
+                        "description": "Number of errors. We return this value when the ProgressCode is Success or SuccessWithErrors.",
+                        "type": "integer"
+                    },
+                    "JobId": {
+                        "description": "A unique identifier which refers to a particular job.",
+                        "type": "string"
+                    },
+                    "JobType": {
+                        "description": "Specifies whether the job to initiate is an import or export job.",
+                        "enum": [
+                            "Import",
+                            "Export"
+                        ],
+                        "type": "string"
+                    },
+                    "LocationCode": {
+                        "description": "A token representing the location of the storage device, such as \"AtAWS\".",
+                        "type": "string"
+                    },
+                    "LocationMessage": {
+                        "description": "A more human readable form of the physical location of the storage device.",
+                        "type": "string"
+                    },
+                    "LogBucket": {
+                        "description": "Amazon S3 bucket for user logs.",
+                        "type": "string"
+                    },
+                    "LogKey": {
+                        "description": "The key where the user logs were stored.",
+                        "type": "string"
+                    },
+                    "ProgressCode": {
+                        "description": "A token representing the state of the job, such as \"Started\".",
+                        "type": "string"
+                    },
+                    "ProgressMessage": {
+                        "description": "A more human readable form of the job status.",
+                        "type": "string"
+                    },
+                    "Signature": {
+                        "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                        "type": "string"
+                    },
+                    "SignatureFileContents": {
+                        "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                        "type": "string"
+                    },
+                    "TrackingNumber": {
+                        "description": "The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is \"Returned\".",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidAccessKeyIdException": {
+                "description": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidAddressException": {
+                "description": "The address specified in the manifest is invalid.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidCustomsException": {
+                "description": "One or more customs parameters was invalid. Please correct and resubmit.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidFileSystemException": {
+                "description": "File system specified in export manifest is invalid.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidJobIdException": {
+                "description": "The JOBID was missing, not found, or not associated with the AWS account.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidManifestFieldException": {
+                "description": "One or more manifest fields was invalid. Please correct and resubmit.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidParameterException": {
+                "description": "One or more parameters had an invalid value.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidVersionException": {
+                "description": "The client tool version is invalid.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "IsCanceled": {
+                "description": "Indicates whether the job was canceled.",
+                "type": "boolean"
+            },
+            "IsTruncated": {
+                "description": "Indicates whether the list of jobs was truncated. If true, then call ListJobs again using the last JobId element as the marker.",
+                "type": "boolean"
+            },
+            "Job": {
+                "description": "Representation of a job returned by the ListJobs operation.",
+                "properties": {
+                    "CreationDate": {
+                        "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "IsCanceled": {
+                        "description": "Indicates whether the job was canceled.",
+                        "type": "boolean"
+                    },
+                    "JobId": {
+                        "description": "A unique identifier which refers to a particular job.",
+                        "type": "string"
+                    },
+                    "JobType": {
+                        "description": "Specifies whether the job to initiate is an import or export job.",
+                        "enum": [
+                            "Import",
+                            "Export"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "JobId": {
+                "description": "A unique identifier which refers to a particular job.",
+                "type": "string"
+            },
+            "JobIdList": {
+                "items": {
+                    "type": "string"
+                },
+                "type": "array"
+            },
+            "JobType": {
+                "description": "Specifies whether the job to initiate is an import or export job.",
+                "enum": [
+                    "Import",
+                    "Export"
+                ],
+                "type": "string"
+            },
+            "JobsList": {
+                "description": "A list container for Jobs returned by the ListJobs operation.",
+                "items": {
+                    "description": "Representation of a job returned by the ListJobs operation.",
+                    "properties": {
+                        "CreationDate": {
+                            "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "IsCanceled": {
+                            "description": "Indicates whether the job was canceled.",
+                            "type": "boolean"
+                        },
+                        "JobId": {
+                            "description": "A unique identifier which refers to a particular job.",
+                            "type": "string"
+                        },
+                        "JobType": {
+                            "description": "Specifies whether the job to initiate is an import or export job.",
+                            "enum": [
+                                "Import",
+                                "Export"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "ListJobsInput": {
+                "description": "Input structure for the ListJobs operation.",
+                "properties": {
+                    "APIVersion": {
+                        "description": "Specifies the version of the client tool.",
+                        "type": "string"
+                    },
+                    "Marker": {
+                        "description": "Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists your jobs in reverse chronological order. See MaxJobs.",
+                        "type": "string"
+                    },
+                    "MaxJobs": {
+                        "description": "Sets the maximum number of jobs returned in the response. If there are additional jobs that were not returned because MaxJobs was exceeded, the response contains &lt;IsTruncated&gt;true&lt;/IsTruncated&gt;. To return the additional jobs, see Marker.",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "ListJobsOutput": {
+                "description": "Output structure for the ListJobs operation.",
+                "properties": {
+                    "IsTruncated": {
+                        "description": "Indicates whether the list of jobs was truncated. If true, then call ListJobs again using the last JobId element as the marker.",
+                        "type": "boolean"
+                    },
+                    "Jobs": {
+                        "description": "A list container for Jobs returned by the ListJobs operation.",
+                        "items": {
+                            "description": "Representation of a job returned by the ListJobs operation.",
+                            "properties": {
+                                "CreationDate": {
+                                    "description": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "IsCanceled": {
+                                    "description": "Indicates whether the job was canceled.",
+                                    "type": "boolean"
+                                },
+                                "JobId": {
+                                    "description": "A unique identifier which refers to a particular job.",
+                                    "type": "string"
+                                },
+                                "JobType": {
+                                    "description": "Specifies whether the job to initiate is an import or export job.",
+                                    "enum": [
+                                        "Import",
+                                        "Export"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "LocationCode": {
+                "description": "A token representing the location of the storage device, such as \"AtAWS\".",
+                "type": "string"
+            },
+            "LocationMessage": {
+                "description": "A more human readable form of the physical location of the storage device.",
+                "type": "string"
+            },
+            "LogBucket": {
+                "description": "Amazon S3 bucket for user logs.",
+                "type": "string"
+            },
+            "LogKey": {
+                "description": "The key where the user logs were stored.",
+                "type": "string"
+            },
+            "MalformedManifestException": {
+                "description": "Your manifest is not well-formed.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Manifest": {
+                "description": "The UTF-8 encoded text of the manifest file.",
+                "type": "string"
+            },
+            "ManifestAddendum": {
+                "description": "For internal use only.",
+                "type": "string"
+            },
+            "Marker": {
+                "description": "Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists your jobs in reverse chronological order. See MaxJobs.",
+                "type": "string"
+            },
+            "MaxJobs": {
+                "description": "Sets the maximum number of jobs returned in the response. If there are additional jobs that were not returned because MaxJobs was exceeded, the response contains &lt;IsTruncated&gt;true&lt;/IsTruncated&gt;. To return the additional jobs, see Marker.",
+                "type": "integer"
+            },
+            "MissingCustomsException": {
+                "description": "One or more required customs parameters was missing from the manifest.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "MissingManifestFieldException": {
+                "description": "One or more required fields were missing from the manifest file. Please correct and resubmit.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "MissingParameterException": {
+                "description": "One or more required parameters was missing from the request.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "MultipleRegionsException": {
+                "description": "Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "NoSuchBucketException": {
+                "description": "The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ProgressCode": {
+                "description": "A token representing the state of the job, such as \"Started\".",
+                "type": "string"
+            },
+            "ProgressMessage": {
+                "description": "A more human readable form of the job status.",
+                "type": "string"
+            },
+            "Signature": {
+                "description": "An encrypted code used to authenticate the request and response, for example, \"DV+TpDfx1/TdSE9ktyK9k/bDTVI=\". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.",
+                "type": "string"
+            },
+            "SignatureFileContents": {
+                "description": "The actual text of the SIGNATURE file to be written to disk.",
+                "type": "string"
+            },
+            "Success": {
+                "description": "Specifies whether (true) or not (false) AWS Import/Export updated your job.",
+                "type": "boolean"
+            },
+            "TrackingNumber": {
+                "description": "The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is \"Returned\".",
+                "type": "string"
+            },
+            "URL": {
+                "description": "The URL for a given Artifact.",
+                "type": "string"
+            },
+            "UnableToCancelJobIdException": {
+                "description": "AWS Import/Export cannot cancel the job",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UnableToUpdateJobIdException": {
+                "description": "AWS Import/Export cannot update the job",
+                "properties": {
+                    "message": {
+                        "description": "The human-readable description of a particular error.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateJobInput": {
+                "description": "Input structure for the UpateJob operation.",
+                "properties": {
+                    "APIVersion": {
+                        "description": "Specifies the version of the client tool.",
+                        "type": "string"
+                    },
+                    "JobId": {
+                        "description": "A unique identifier which refers to a particular job.",
+                        "type": "string"
+                    },
+                    "JobType": {
+                        "description": "Specifies whether the job to initiate is an import or export job.",
+                        "enum": [
+                            "Import",
+                            "Export"
+                        ],
+                        "type": "string"
+                    },
+                    "Manifest": {
+                        "description": "The UTF-8 encoded text of the manifest file.",
+                        "type": "string"
+                    },
+                    "ValidateOnly": {
+                        "description": "Validate the manifest and parameter values in the request but do not actually create a job.",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "JobId",
+                    "Manifest",
+                    "JobType",
+                    "ValidateOnly"
+                ],
+                "type": "object"
+            },
+            "UpdateJobOutput": {
+                "description": "Output structure for the UpateJob operation.",
+                "properties": {
+                    "ArtifactList": {
+                        "description": "A collection of artifacts.",
+                        "items": {
+                            "description": "A discrete item that contains the description and URL of an artifact (such as a PDF).",
+                            "properties": {
+                                "Description": {
+                                    "description": "The associated description for this object.",
+                                    "type": "string"
+                                },
+                                "URL": {
+                                    "description": "The URL for a given Artifact.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "Success": {
+                        "description": "Specifies whether (true) or not (false) AWS Import/Export updated your job.",
+                        "type": "boolean"
+                    },
+                    "WarningMessage": {
+                        "description": "An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ValidateOnly": {
+                "description": "Validate the manifest and parameter values in the request but do not actually create a job.",
+                "type": "boolean"
+            },
+            "WarningMessage": {
+                "description": "An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.",
+                "type": "string"
+            },
+            "city": {
+                "description": "Specifies the name of your city for the return address.",
+                "type": "string"
+            },
+            "company": {
+                "description": "Specifies the name of the company that will ship this package.",
+                "type": "string"
+            },
+            "country": {
+                "description": "Specifies the name of your country for the return address.",
+                "type": "string"
+            },
+            "name": {
+                "description": "Specifies the name of the person responsible for shipping this package.",
+                "type": "string"
+            },
+            "phoneNumber": {
+                "description": "Specifies the phone number of the person responsible for shipping this package.",
+                "type": "string"
+            },
+            "postalCode": {
+                "description": "Specifies the postal code for the return address.",
+                "type": "string"
+            },
+            "stateOrProvince": {
+                "description": "Specifies the name of your state or your province for the return address.",
+                "type": "string"
+            },
+            "street1": {
+                "description": "Specifies the first part of the street address for the return address, for example 1234 Main Street.",
+                "type": "string"
+            },
+            "street2": {
+                "description": "Specifies the optional second part of the street address for the return address, for example Suite 100.",
+                "type": "string"
+            },
+            "street3": {
+                "description": "Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.",
+                "type": "string"
+            }
+        },
+        "parameters": {
+            "AWSAccessKeyId": {
+                "in": "query",
+                "name": "AWSAccessKeyId",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Action": {
+                "in": "query",
+                "name": "Action",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Signature": {
+                "in": "query",
+                "name": "Signature",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "SignatureMethod": {
+                "in": "query",
+                "name": "SignatureMethod",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "SignatureVersion": {
+                "in": "query",
+                "name": "SignatureVersion",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Timestamp": {
+                "in": "query",
+                "name": "Timestamp",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Version": {
+                "in": "query",
+                "name": "Version",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "hmac": {
+                "description": "Amazon Signature authorization v2",
+                "in": "header",
+                "name": "Authorization",
+                "type": "apiKey",
+                "x-amazon-apigateway-authtype": "awsSigv2"
+            }
+        }
+    }
+}

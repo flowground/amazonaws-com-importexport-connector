@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "Operation": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "GetStatus"
+            ]
+        },
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "SignatureMethod": {
+            "required": true,
+            "type": "string"
+        },
+        "SignatureVersion": {
+            "required": true,
+            "type": "string"
+        },
+        "Timestamp": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "Signature": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Input structure for the GetStatus operation.",
+            "properties": {
+                "APIVersion": {
+                    "description": "Specifies the version of the client tool.",
+                    "type": "string"
+                },
+                "JobId": {
+                    "description": "A unique identifier which refers to a particular job.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "JobId"
+            ],
+            "type": "object"
+        }
+    }
+}
